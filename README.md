@@ -2,6 +2,7 @@
 Basic accounting application
 The basic software pupose is to understand Python structure for future project development projects 
 and also I am planning to use Github as a developmen environment.
+test phase
 
 Planning data base: Mysql 5.5
 Development environment: Python 3
