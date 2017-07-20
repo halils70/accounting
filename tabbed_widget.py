@@ -1,16 +1,22 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+from PyQt5.QtCore import *
 
-class inputdialogdemo(QTabWidget):
+class tab_widget(QTabWidget):
     def __init__(self, parent=None):
-        super(inputdialogdemo, self).__init__(parent)
+        super(tab_widget, self).__init__(parent)
         self.setGeometry(100,100,600,300)
-        self.Tab1 = QWidget()
-        self.Tab2 = QWidget()
-        self.Tab3 = QWidget()
-        self.Tab4 = QWidget()
-        self.Tab5 = QWidget()
+        self.setStyleSheet("QTabBar{font: bold;}")
+        self.setMovable(True)
+
+        self.Tab1 = QTabWidget()
+
+        self.Tab2 = QTabWidget()
+
+        self.Tab3 = QTabWidget()
+        self.Tab4 = QTabWidget()
+        self.Tab5 = QTabWidget()
 
         self.addTab(self.Tab1,"Tab1")
         self.addTab(self.Tab2,"Tab2")
@@ -27,6 +33,48 @@ class inputdialogdemo(QTabWidget):
 
     def Tab_1_UI(self):
         layout = QFormLayout()
+        label_picture = QLabel()
+        label_picture.setScaledContents(True)
+        picture_view = QPixmap("/home/hsa/PycharmProjects/writer/ozet_ana_ekran.png")
+         #   .scaled(size,Qt.KeepAspectRatio,Qt.SmoothTransformation)
+
+        label_picture.setPixmap(picture_view)
+        layout.addRow(label_picture)
+
+        self.setTabText(0, "&İşletme Hesap Özet Göstergeleri")
+        self.Tab1.setLayout(layout)
+
+
+    def Tab_2_UI(self):
+        layout=QFormLayout()
+        sex=QHBoxLayout()
+        sex.addWidget(QRadioButton("Male"))
+        sex.addWidget(QRadioButton("Female"))
+        layout.addRow(QLabel("Sex"),sex)
+        layout.addRow("Date of Birth",QLineEdit())
+        tabtext1 = "&Cari Hesap Kartları"
+        self.setTabText(1,tabtext1)
+        self.Tab2.setLayout(layout)
+
+    def Tab_3_UI(self):
+        layout=QHBoxLayout()
+        layout.addWidget(QLabel("subjects"))
+        layout.addWidget(QCheckBox("Physics"))
+        layout.addWidget(QCheckBox("Maths"))
+
+        self.setTabText(2,"&Kasa Banka Kartları")
+        self.Tab3.setLayout(layout)
+
+    def Tab_4_UI(self):
+        layout=QHBoxLayout()
+        layout.addWidget(QLabel("subjects"))
+        layout.addWidget(QCheckBox("Physics"))
+        layout.addWidget(QCheckBox("Maths"))
+        self.setTabText(3,"&Stok Envanter Kartları")
+        self.Tab4.setLayout(layout)
+
+    def Tab_5_UI(self):
+        layout = QFormLayout()
         self.btn=QPushButton("Choose from list")
         self.btn.clicked.connect(self.getItem)
         self.le=QLineEdit()
@@ -42,43 +90,7 @@ class inputdialogdemo(QTabWidget):
         self.le2=QLineEdit()
         layout.addRow(self.btn2,self.le2)
 
-        self.setTabText(0, "&İşletme Hesap Özet Göstergeleri")
-        self.Tab1.setLayout(layout)
-
-        #self.setWindowTitle("Input Dialog demo")
-
-    def Tab_2_UI(self):
-        layout=QFormLayout()
-        sex=QHBoxLayout()
-        sex.addWidget(QRadioButton("Male"))
-        sex.addWidget(QRadioButton("Female"))
-        layout.addRow(QLabel("Sex"),sex)
-        layout.addRow("Date of Birth",QLineEdit())
-        self.setTabText(1,"&Cari Hesap Kartları")
-        self.Tab2.setLayout(layout)
-
-    def Tab_3_UI(self):
-        layout=QHBoxLayout()
-        layout.addWidget(QLabel("subjects"))
-        layout.addWidget(QCheckBox("Physics"))
-        layout.addWidget(QCheckBox("Maths"))
-        self.setTabText(2,"&Kasa Banka Kartları")
-        self.Tab3.setLayout(layout)
-
-    def Tab_4_UI(self):
-        layout=QHBoxLayout()
-        layout.addWidget(QLabel("subjects"))
-        layout.addWidget(QCheckBox("Physics"))
-        layout.addWidget(QCheckBox("Maths"))
-        self.setTabText(3,"&Stok Envanter Kartları")
-        self.Tab4.setLayout(layout)
-
-    def Tab_5_UI(self):
-        layout=QHBoxLayout()
-        layout.addWidget(QLabel("subjects"))
-        layout.addWidget(QCheckBox("Physics"))
-        layout.addWidget(QCheckBox("Maths"))
-        self.setTabText(4,"&Çalışan Kartları")
+        self.setTabText(4, "&Çalışan Hesap Hareketleri")
         self.Tab5.setLayout(layout)
 
     def getItem(self):
@@ -98,7 +110,7 @@ class inputdialogdemo(QTabWidget):
             self.le2.setText(str(num))
 def main():
     app = QApplication(sys.argv)
-    ex = inputdialogdemo()
+    ex = tab_widget()
     ex.show()
     sys.exit(app.exec_())
 

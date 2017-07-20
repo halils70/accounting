@@ -12,7 +12,7 @@ class anaPencere(QMainWindow):
 
     def initUI(self):
 
-        self.setGeometry(300,100,800,600)
+        self.setGeometry(100,100,800,600)
         self.setWindowTitle("İşletme Cari Hesap Otomasyonu")
         self.statusBar()
 
@@ -34,7 +34,7 @@ class anaPencere(QMainWindow):
         #frame.setFrameShape(QFrame.StyledPanel)
         main_frame.setFrameShadow(QFrame.Sunken)
         #frame.setFrameShape(QFrame.HLine)
-        tabbed_win = inputdialogdemo(self)
+        tabbed_win = tab_widget(self)
         self.setCentralWidget(tabbed_win)
 
         self.create_horizantalGroupBox()
