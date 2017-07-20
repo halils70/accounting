@@ -9,6 +9,8 @@ class tab_widget(QTabWidget):
         self.setGeometry(100,100,600,300)
         self.setStyleSheet("QTabBar{font: bold;}")
         self.setMovable(True)
+        self.setTabsClosable(True)
+        self.setTabShape(1)
 
         self.Tab1 = QTabWidget()
 
@@ -46,12 +48,82 @@ class tab_widget(QTabWidget):
 
 
     def Tab_2_UI(self):
-        layout=QFormLayout()
-        sex=QHBoxLayout()
-        sex.addWidget(QRadioButton("Male"))
-        sex.addWidget(QRadioButton("Female"))
-        layout.addRow(QLabel("Sex"),sex)
-        layout.addRow("Date of Birth",QLineEdit())
+
+        cari_hes_no_label       = QLabel("Cari Hesap No")
+        cari_hes_firma_label    = QLabel("Firma Adı")
+        cari_hes_yetkili_label  = QLabel("Yetkili")
+        cari_ver_daire_label    = QLabel("Vergi Dairesi")
+        cari_ver_no_label       = QLabel("Vergi No")
+
+        cari_hes_no = QLineEdit()
+        cari_hes_no.setInputMask("NNN-NNNN")
+        #cari_hes_no.setMaxLength(8)
+        #cari_hes_no.setAlignment(Qt.AlignLeft)
+        #cari_hes_no.home(True)
+        #cari_hes_no.setCursorPosition(0)
+        #cari_hes_no.setFrame(True)
+
+        cari_hes_firma = QLineEdit()
+        cari_hes_firma.setInputMask("NNNNNNNNNNNNNNNNNNNN")
+        #cari_hes_firma.setMaxLength(20)
+        #cari_hes_firma.setAlignment(Qt.AlignLeft)
+        #cari_hes_firma.home(True)
+        #cari_hes_firma.setCursorPosition(0)
+        #cari_hes_firma.setFrame(True)
+
+        cari_hes_yetkili = QLineEdit()
+        cari_hes_yetkili.setInputMask("NNNNNNNNNNNNNNNNNNNN")
+        cari_hes_yetkili.setMaxLength(20)
+        cari_hes_yetkili.setAlignment(Qt.AlignLeft)
+        cari_hes_yetkili.home(True)
+        cari_hes_yetkili.setCursorPosition(0)
+        cari_hes_yetkili.setFrame(True)
+
+        cari_ver_daire = QLineEdit()
+        cari_ver_daire.setInputMask("NNNNNNNNNNNNNNNNNNNN")
+        cari_ver_daire.setMaxLength(20)
+        cari_ver_daire.setAlignment(Qt.AlignLeft)
+        cari_ver_daire.home(True)
+        cari_ver_daire.setCursorPosition(0)
+        cari_ver_daire.setFrame(True)
+
+        cari_ver_no = QLineEdit()
+        cari_ver_no.setInputMask("9999999999")
+        cari_ver_no.setMaxLength(20)
+        cari_ver_no.setAlignment(Qt.AlignLeft)
+        cari_ver_no.home(True)
+        cari_ver_no.setCursorPosition(0)
+        cari_ver_no.setFrame(True)
+
+
+        layout=QGridLayout()
+        #layout.setFieldGrowthPolicy(QFormLayout.ExpandingFieldsGrow)
+        cari_hes_kategori = QGroupBox("Müşteri Kategori")
+        cari_hes_kategori1 = QRadioButton("Müşteri")
+        cari_hes_kategori2 = QRadioButton("Tedarikci")
+        cari_hes_kategori1.setChecked(True)
+        hbox = QHBoxLayout()
+        hbox.addWidget(cari_hes_kategori1)
+        hbox.addWidget(cari_hes_kategori2)
+        #hbox.addStretch(1)
+        cari_hes_kategori.setLayout(hbox)
+
+        layout.addWidget(cari_hes_kategori,0,0,1,1)
+
+        #layout.addWidget(cari_hes_kategori1,0,0)
+        #layout.addWidget(cari_hes_kategori2,0,1)
+        layout.addWidget(cari_hes_no_label,1,0)
+        layout.addWidget(cari_hes_no,1,1)
+        layout.addWidget(cari_hes_firma_label,2,0)
+        layout.addWidget(cari_hes_firma,2,1)
+        layout.addWidget(cari_hes_yetkili_label,3,0)
+        layout.addWidget(cari_hes_yetkili,3,1)
+        layout.addWidget(cari_ver_daire_label,4,0)
+        layout.addWidget(cari_ver_daire,4,1)
+        layout.addWidget(cari_ver_no_label,5,0)
+        layout.addWidget(cari_ver_no,5,1)
+        self.setLayout(layout)
+
         tabtext1 = "&Cari Hesap Kartları"
         self.setTabText(1,tabtext1)
         self.Tab2.setLayout(layout)

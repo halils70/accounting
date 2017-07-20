@@ -35,6 +35,8 @@ class anaPencere(QMainWindow):
         main_frame.setFrameShadow(QFrame.Sunken)
         #frame.setFrameShape(QFrame.HLine)
         tabbed_win = tab_widget(self)
+        #tabbed_win.Rounded
+
         self.setCentralWidget(tabbed_win)
 
         self.create_horizantalGroupBox()
