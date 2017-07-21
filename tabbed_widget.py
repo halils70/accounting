@@ -2,6 +2,7 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
+import test_17
 
 class tab_widget(QTabWidget):
     def __init__(self, parent=None):
@@ -57,19 +58,9 @@ class tab_widget(QTabWidget):
 
         cari_hes_no = QLineEdit()
         cari_hes_no.setInputMask("NNN-NNNN")
-        #cari_hes_no.setMaxLength(8)
-        #cari_hes_no.setAlignment(Qt.AlignLeft)
-        #cari_hes_no.home(True)
-        #cari_hes_no.setCursorPosition(0)
-        #cari_hes_no.setFrame(True)
 
         cari_hes_firma = QLineEdit()
         cari_hes_firma.setInputMask("NNNNNNNNNNNNNNNNNNNN")
-        #cari_hes_firma.setMaxLength(20)
-        #cari_hes_firma.setAlignment(Qt.AlignLeft)
-        #cari_hes_firma.home(True)
-        #cari_hes_firma.setCursorPosition(0)
-        #cari_hes_firma.setFrame(True)
 
         cari_hes_yetkili = QLineEdit()
         cari_hes_yetkili.setInputMask("NNNNNNNNNNNNNNNNNNNN")
@@ -95,33 +86,31 @@ class tab_widget(QTabWidget):
         cari_ver_no.setCursorPosition(0)
         cari_ver_no.setFrame(True)
 
+        self.frame_main_tab2 = QFrame(self.Tab2)
+        self.frame_main_tab2.setGeometry(5,100,795,200)
 
-        layout=QGridLayout()
-        #layout.setFieldGrowthPolicy(QFormLayout.ExpandingFieldsGrow)
-        cari_hes_kategori = QGroupBox("Müşteri Kategori")
-        cari_hes_kategori1 = QRadioButton("Müşteri")
-        cari_hes_kategori2 = QRadioButton("Tedarikci")
+
+        cari_hes_kategori = QGroupBox()
+        cari_hes_kategori.setTitle("Müşteri Kategori")
+        cari_hes_kategori.setFlat(True)
+        cari_hes_kategori1 = QRadioButton(cari_hes_kategori)
+        cari_hes_kategori1.setText("Müşteri")
+
+        cari_hes_kategori2 = QRadioButton(cari_hes_kategori)
+        cari_hes_kategori2.setText("Tedarikci")
         cari_hes_kategori1.setChecked(True)
-        hbox = QHBoxLayout()
-        hbox.addWidget(cari_hes_kategori1)
-        hbox.addWidget(cari_hes_kategori2)
-        #hbox.addStretch(1)
+        hbox = QGridLayout()
+        hbox.addWidget(cari_hes_kategori1,0,0)
+        hbox.addWidget(cari_hes_kategori2,0,1)
         cari_hes_kategori.setLayout(hbox)
 
-        layout.addWidget(cari_hes_kategori,0,0,1,1)
-
-        #layout.addWidget(cari_hes_kategori1,0,0)
-        #layout.addWidget(cari_hes_kategori2,0,1)
-        layout.addWidget(cari_hes_no_label,1,0)
-        layout.addWidget(cari_hes_no,1,1)
-        layout.addWidget(cari_hes_firma_label,2,0)
-        layout.addWidget(cari_hes_firma,2,1)
-        layout.addWidget(cari_hes_yetkili_label,3,0)
-        layout.addWidget(cari_hes_yetkili,3,1)
-        layout.addWidget(cari_ver_daire_label,4,0)
-        layout.addWidget(cari_ver_daire,4,1)
-        layout.addWidget(cari_ver_no_label,5,0)
-        layout.addWidget(cari_ver_no,5,1)
+        layout=QFormLayout()
+        layout.addRow(cari_hes_kategori)
+        layout.addRow(cari_hes_no_label,cari_hes_no)
+        layout.addRow(cari_hes_firma_label,cari_hes_firma)
+        layout.addRow(cari_hes_yetkili_label,cari_hes_yetkili)
+        layout.addRow(cari_ver_daire_label,cari_ver_daire)
+        layout.addRow(cari_ver_no_label,cari_ver_no)
         self.setLayout(layout)
 
         tabtext1 = "&Cari Hesap Kartları"

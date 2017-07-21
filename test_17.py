@@ -19,12 +19,11 @@ class anaPencere(QMainWindow):
         #textEdit = QTextEdit()
         #self.setCentralWidget(textEdit)
 
-        main_frame = QFrame(self)
-        main_frame.setFrameStyle(QFrame.Box)
-        main_frame.setLineWidth(2)
-        self.setCentralWidget(main_frame)
-
-        main_frame.resize(800,200)
+        #self.main_frame = QFrame(self)
+        #self.main_frame.setFrameStyle(QFrame.Box)
+        #self.main_frame.setLineWidth(2)
+        #self.setCentralWidget(self.main_frame)
+        #main_frame.resize(800,200)
         self.create_menuBar()
         self.create_toolBar()
 
@@ -32,16 +31,15 @@ class anaPencere(QMainWindow):
         #frame.setStyleSheet("background-color: gray;")
         #border: 5px solid black
         #frame.setFrameShape(QFrame.StyledPanel)
-        main_frame.setFrameShadow(QFrame.Sunken)
+        #self.main_frame.setFrameShadow(QFrame.Sunken)
         #frame.setFrameShape(QFrame.HLine)
         tabbed_win = tab_widget(self)
         #tabbed_win.Rounded
 
         self.setCentralWidget(tabbed_win)
-
-        self.create_horizantalGroupBox()
-        self.create_gridGroupBox()
-        self.create_formGroupBox()
+        #self.create_horizantalGroupBox()
+        #self.create_gridGroupBox()
+        #self.create_formGroupBox()
 
     def create_menuBar(self):
         new_action = QAction(QIcon('/home/hsa/PycharmProjects/writer/icons/new.png'),'&New',self)
